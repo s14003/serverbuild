@@ -29,11 +29,13 @@
 
 ###Wordpress用のデータベースを作成  
 
-* `mysql -u root -p`  
-	- `create database databasename;`  
-	- `grant all privileges on databasename.* to "username"@"localhost" identified by "password";`    
-	- `flush pricileges;`  
-	- `exit`  
+``` mysql
+	mysql -u root -p  
+	create database databasename;
+	grant all privileges on databasename.* to "username"@"localhost" identified by "password";
+	flush pricileges;
+	exit;
+```
 
 * wp-config.phpにさっき作ったデータベースのデータを入力  
 * 秘密鍵の値を入力  
