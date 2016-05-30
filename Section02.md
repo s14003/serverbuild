@@ -40,7 +40,7 @@ Vagrantfileの中身を書き換える
 
 ###php-fpmの設定  
 
-www.confの中身のユーザ・グループをnginxに変更  
+`www.conf`の中身のユーザ・グループをnginxに変更  
 `systemctl start php-fpm`でphp-fpmのサービスを起動  
 `systemctl enable php-fpm`で自動起動の設定  
 
@@ -96,6 +96,15 @@ MariaDBで作った内容を入力、ユニークキーを入れて:wq
 
 ##2-3Wordpressを動かす  
 ###apacheをダウンロード・コンパイル
+###ダウンロード
+公式サイトからvarsion2.2のものをwgetを使ってダウンロード  
+####ソースツリーの設定 
+デフォルトオプションを使ってソースツリーを全て設定するなら  
+`./configre`  
+####ビルド  
+`make`
+####インストール  
+`make install`  
 
 ###phpをダウンロード・コンパイル  
 ####ダウンロード・展開  
@@ -110,3 +119,20 @@ MariaDBで作った内容を入力、ユニークキーを入れて:wq
 `make`
 ####インストール  
 `make install`    
+
+###MySQLのインストール  
+`wget https://dev.mysql.com/get/mysql57-community-release-el7-8.noarch.rpm` で、インストール  
+`tar mysql57-community-release-el7-8.noarch.rpm`で、展開。  
+`sudo yum -y install mysql mysql-devel mysql-server`   
+
+###Wordpress用のデータベース作成  
+* `mysql -u root -p`  
+	- `create database databasename;`  
+	- `grant all privileges on databasename.* to "username"@"localhost" identified by "password";`    
+	- `flush pricileges;`  
+	- `exit`  
+
+###wp-configの設定  
+DocumentRootをWordpressがある位置に変更する  
+
+
