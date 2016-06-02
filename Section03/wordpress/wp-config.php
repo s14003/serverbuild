@@ -42,6 +42,7 @@ define('DB_COLLATE', '');
  * {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org の秘密鍵サービス} で自動生成することもできます。
  * 後でいつでも変更して、既存のすべての cookie を無効にできます。これにより、すべてのユーザーを強制的に再ログインさせることになります。
  *
+ * 下のユニークキーは自分でやってね
  * @since 2.6.0
  */
 define('');
