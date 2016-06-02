@@ -40,3 +40,6 @@ playbook実行中にどこがエラーなのか見たい場合は
 
 を実行すればいいんじゃないかな  
 
+## 3-1-2 VagrantfileからAnsibleを呼び出す  
+Vagrantfile見てちょ  
+
