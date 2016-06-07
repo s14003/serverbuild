@@ -39,3 +39,12 @@ EC2の中のAMIにいって作成ボタンを押す。AMI作る
 15. インスタンスに戻ってパブリックDNSをコピーしてhttp://のあとに入れる  
 16. 自分のインスタンスIDを入力  
 17. Wordpressの画面がでたらおけー  
+
+## 6-4 CloudFront  
+1. マイAMIを使ってインスタンスを作る  
+2. CloudFrontに行ってCreate Distributionをクリック  
+3. WebとRTMPがあるが、Webを選択  
+4. Origin Domain Nameに1で作ったインスタンスのパブリックDNSを指定。  
+5. Create Distributionを押す  
+6. Domain nameをhttp://のあとに追加して実行  
+
