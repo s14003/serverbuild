@@ -48,3 +48,15 @@ EC2の中のAMIにいって作成ボタンを押す。AMI作る
 5. Create Distributionを押す  
 6. Domain nameをhttp://のあとに追加して実行  
 
+# 6-5 ELB  
+
+1. 普通にインスタンスを作成  
+2. 新規イメージの作成からAMIを作る  
+3. AMIを使ってインスタンスを2つ作る  
+4. ロードバランサー を新規作成  
+詳しくはこちら http://http://qiita.com/hiroshik1985/items/ffda3f2bdb71599783a3#elb%E3%81%AE%E4%BD%9C%E6%88%90  
+5. grusからsshでそれぞれに接続  
+6. /var/log/nginx/access.logにアクセス  
+7. IPアドレスが分散されているか確認  
+8. ロードバランサーに行って、説明の一番上にあるDNSのアドレスに繋いで、最初に作ったワードプレスが表示されたら終了  
+
