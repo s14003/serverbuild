@@ -1,4 +1,7 @@
+## 6-0 AWSコマンドラインインターフェイスのインストール  
 
+[詳細はこちら](http://docs.aws.amazon.com/ja_jp/cli/latest/userguide/installing.html)  
+To install pip on Linuxの2までできてればおけーなはず  
 
 ## 6-1 AWS EC2 + Ansible   
 
@@ -8,7 +11,7 @@
 scpしてきたplaybook.ymlを書き換える  
 hostsも新しいIPアドレスに書き換える  
 
-	ansible-playbook playbook.yml -i hosts  --private-key ~/.vagrant.d/insecure_private_key -u ec2-user -k
+	ansible-playbook playbook.yml -i hosts  --private-key 学籍番号.pemのパス -u ec2-user -k
 
 あとはエラーログ見ながら権限とかソケットとか直していけばおけー  
 パブリックDNSに書かれているのを、http://のあとに付け足してWordpressの画面が出たらおけー  
@@ -30,7 +33,7 @@ EC2の中のAMIにいって作成ボタンを押す。AMI作る
 6. インスタンスを選択  
 7. “確認して起動” をクリック  
 8. 起動をクリック  
-9. 自分のキーペアを作成  
+9. 自分のキーペアを設定    
 10. インスタンスを起動する  
 11. 左メニューのエラスティック IP を選択  
 12. 新規のアドレスを割り当てるをクリック  
@@ -53,8 +56,7 @@ EC2の中のAMIにいって作成ボタンを押す。AMI作る
 1. 普通にインスタンスを作成  
 2. 新規イメージの作成からAMIを作る  
 3. AMIを使ってインスタンスを2つ作る  
-4. ロードバランサー を新規作成  
-詳しくはこちら //http://qiita.com/hiroshik1985/items/ffda3f2bdb71599783a3#elb%E3%81%AE%E4%BD%9C%E6%88%90  
+4. ロードバランサー を新規作成→  [詳細](http://qiita.com/hiroshik1985/items/ffda3f2bdb71599783a3#elb%E3%81%AE%E4%BD%9C%E6%88%90)  
 5. grusからsshでそれぞれに接続  
 6. /var/log/nginx/access.logにアクセス  
 7. IPアドレスが分散されているか確認  
