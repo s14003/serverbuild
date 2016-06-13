@@ -28,44 +28,45 @@ Vagrantfileの中身を書き換える
 
 ###Vagrantfileの設定変更の反映  
 
-	vagrant reload   
+	$ vagrant reload   
 
 ###仮想マシンの起動  
 
-	vagrant ssh  
+	$ vagrant ssh  
 
 ##2-2Wordpressを動かす  
 ### nginxのインストール
-
-	yum install --enablerepo=epel nginx  
+	
+	$ sudo yum -y install http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+	$ yum install --enablerepo=epel nginx  
 でnginxをインストール  
 
 ### phpのインストール 
 
-	sudo yum install --enablerepo=epel,remi-php70 php php-mbstring php-pear php-fpm php-mcrypt php-mysql  
+	$ sudo yum install --enablerepo=epel,remi-php70 php php-mbstring php-pear php-fpm php-mcrypt php-mysql  
 
 ### php-fpmの設定  
 
 	www.conf の中身のユーザ・グループをnginxに変更  
-	systemctl start php-fpm でphp-fpmのサービスを起動  
-	systemctl enable php-fpm で自動起動の設定  
+	$ systemctl start php-fpm でphp-fpmのサービスを起動  
+	$ systemctl enable php-fpm で自動起動の設定  
 
 ### MariaDBのインストール 
 
-	yum -y install mariadb mariadb-server  
+	$ yum -y install mariadb mariadb-server  
 
 ### MariaDBの起動  
 
-	systemctl start mariadb でサービスを起動   
-	systemctl enable mariadb で自動起動設定  
+	$ systemctl start mariadb でサービスを起動   
+	$ systemctl enable mariadb で自動起動設定  
 
 ### MariaDBの設定  
 
-	mysql_secure_installation
+	$ mysql_secure_installation
 
 ### MariaDBの再起動  
 
-	systemctl restart mariadb  
+	$ systemctl restart mariadb  
 
 ### Wordpress用のデータベースを作成  
 
@@ -79,25 +80,25 @@ Vagrantfileの中身を書き換える
 
 	
 ### Wordpressのダウンロード  
-	wget http://wordpress.org/latest.tar.gz    
+	$ wget http://wordpress.org/latest.tar.gz    
 でダウンロード開始  
 
-	tar xzfv latest-ja.tar.gz  
+	$ tar xzfv latest-ja.tar.gz  
 で解凍  
 所有者とグループをnginxに変更  
 
-	chown -R nginx:nginx wordpress  
+	$ chown -R nginx:nginx wordpress  
 
 wordpressのディレクトリを/var/www/の中に移動  
 
 ### default.confの中身を変更  
 
-	vi /etc/nginx/conf.d/default.conf  
+	$ vi /etc/nginx/conf.d/default.conf  
 rootをwordpressを置いた場所に変更  
 
 	fastcgi_param SCRIPT_FILENAME に $document_root$fastcgi_script_name; を入れる  
 
-	systemctl restart nginx  
+	$ systemctl restart nginx  
 
 でnginxを再起動  
 
@@ -185,4 +186,4 @@ DocumentRootをWordpressがある位置に変更する
 PHPが動いてないっぽかったらFilesMatchを確認する  
 
 
-	$ 192.168.56.129/wp-admin/install.php に繋いでインストールが開始されたら終了  
+	 192.168.56.129/wp-admin/install.php に繋いでインストールが開始されたら終了  
