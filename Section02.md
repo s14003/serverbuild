@@ -48,7 +48,7 @@ Vagrantfileの中身を書き換える
 
 ### php-fpmの設定  
 
-www.conf の中身のユーザ・グループをnginxに変更  
+`www.conf` の中身のユーザ・グループをnginxに変更  
 
 	$ systemctl start php-fpm でphp-fpmのサービスを起動  
 
@@ -88,7 +88,7 @@ www.conf の中身のユーザ・グループをnginxに変更
 
 でダウンロード開始  
 
-	$ tar xzfv latest-ja.tar.gz  
+	$ tar -xzfv latest-ja.tar.gz  
 
 で解凍  
 所有者とグループをnginxに変更  

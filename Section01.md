@@ -1,5 +1,4 @@
 #Section01	
-##05/10(火)
 ###virtualboxのインストール
 公式ページに飛んでUbuntu用のものをダウンロード＆インストール
 
@@ -36,7 +35,25 @@ viで/etc/sysconfig/network-scripts/ifcfg-enp0s3と
 
 ### wget,httpd,phpのインストール  
 
+	$ yum -y install http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 	$ yum -y install httpd mysql mysql-server mysql-devel mysql-utilities php php-mysql wget  
+
+### サービス起動  
+	$ sudo systemctl start サービス名  
+
+### サービスの再起動  
+	$ sudo systemctl restart サービス名  
+
+### サービスの終了  
+	$ sudo systemctl stop サービス名  
+
+### サービスのステータス確認  
+	$ sudo systemctl status サービス名  
+
+### mysql の初期設定  
+	$ mysql_secure_installation  
+でrootパスワードを変更  
+あとは英文を読んで[Y/N]を選ぶ 
 
 ###Wordpressのインストール  
 
