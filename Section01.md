@@ -58,7 +58,7 @@ viで/etc/sysconfig/network-scripts/ifcfg-enp0s3と
 ```
 
 wp-config.phpにうえで作ったデータベースのデータを入力  
-秘密鍵の値を入力  
+[秘密鍵の値](https://api.wordpress.org/secret-key/1.1/salt/)を入力  
 
 `/etc/httpd/httpd.conf` の中身を修正する  
 

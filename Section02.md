@@ -111,7 +111,7 @@ rootをwordpressを置いた場所に変更
 ### wp-config.phpの編集  
 
 wordpressの中のwp-config-sample.phpをwp-config.phpに変更して中身を編集  
-MariaDBで作った内容を入力、ユニークキーを入れて:wq  
+MariaDBで作った内容と[オンラインジェネレーター](https://api.wordpress.org/secret-key/1.1/salt/)で作った秘密鍵をこっちに書き込む 
 
 	192.168.56.129/wp-admin/install.php に繋いでインストールが開始されたら終了  
 
@@ -119,7 +119,7 @@ MariaDBで作った内容を入力、ユニークキーを入れて:wq
 
 ### 2-3-1 apacheをダウンロード・コンパイル
 #### ダウンロード
-公式サイトからvarsion2.2のもの弁べいっｆっｄをwgetを使ってダウンロード  
+公式サイトからvarsion2.2のものをwgetを使ってダウンロード  
 #### ソースツリーの設定 
 デフォルトオプションを使ってソースツリーを全て設定するなら  
 
@@ -184,8 +184,15 @@ MariaDBで作った内容を入力、ユニークキーを入れて:wq
 #### 展開  
 	$ tar -xvf latest.tar.gz`  
 
+#### 移動  
+
+Wordpressディレクトリを`/var/www/`の下に移動させる  
+
 ####wp-configの設定  
-mysqlで作ったデータをこっちに書き込む  
+	$ sudo cp wp-config-sample.php wp-config.php 
+
+wp-config.phpにmysqlで作ったデータと[オンラインジェネレーター](https://api.wordpress.org/secret-key/1.1/salt/)で作った秘密鍵をこっちに書き込む  
+
 
 ### 2-3-5httpd.confの設定  
 DocumentRootをWordpressがある位置に変更する  
@@ -194,4 +201,5 @@ PHPが動いてないっぽかったらFilesMatchを確認する
 
 	 192.168.56.129/wp-admin/install.php に繋いでインストールが開始されたら終了  
 
-##2-4
+##2-4 ベンチマークを取る  
+
