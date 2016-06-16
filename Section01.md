@@ -16,22 +16,36 @@ virtualboxのネットワーク設定からホストオンリーアダプター�
 
 sudo の権限がなかったのでrootユーザーになってvisudoで権限を追加する  
 /etc/yum.conf にproxyの設定を追加  
-viで/etc/sysconfig/network-scripts/ifcfg-enp0s3と/etc/sysconfig/network-scripts/ifcfg-enp0s8のONBOOTをyesに書き換える  
-/etc/sysconfig/network-script/ifup enp0s3 を実行  
-/etc/sysconfig/network-script/ifup enp0s8 を実行  
+/etc/wgetrc にもproxyの設定を追加(80行目あたりにあるよ)  
+
+###ネットワークアダプター1/2へのIPアドレスの設定とssh接続の確認  
+
+viで/etc/sysconfig/network-scripts/ifcfg-enp0s3と  
+/etc/sysconfig/network-scripts/ifcfg-enp0s8のONBOOTをyesに書き換える  
+
+	$ ./etc/sysconfig/network-script/ifup enp0s3   
+	$ ./etc/sysconfig/network-script/ifup enp0s8   
 
 	$ sudo yum update    
 
-* ip addr で自分のIPアドレスを確認  
+* `$ ip a` で自分のIPアドレスを確認  
 
 ###sshで接続  
 
 	ssh s14003@192.168.56.101  
 
+### wget,httpd,phpのインストール  
+
+	$ yum -y install httpd mysql mysql-server mysql-devel mysql-utilities php php-mysql wget  
+
 ###Wordpressのインストール  
 
-	$ yum -y install httpd mysql mysql-server mysql-devel mysql-utilities php php-mysql wget`  
+	$ wget http://wordpress.org/latest.tar.gz  
 	$ tar xzfv latest-ja.tar.gz`  
+
+###Wordpressの移動  
+
+	$sudo cp -r /var/www  
 
 ###Wordpress用のデータベースを作成  
 
@@ -43,11 +57,13 @@ viで/etc/sysconfig/network-scripts/ifcfg-enp0s3と/etc/sysconfig/network-script
 	exit;
 ```
 
-wp-config.phpにさっき作ったデータベースのデータを入力  
+wp-config.phpにうえで作ったデータベースのデータを入力  
 秘密鍵の値を入力  
 
-	/etc/httpd/httpd.conf の中身を修正する  
+`/etc/httpd/httpd.conf` の中身を修正する  
 
-	192.168.56.101/wp-admin/install.php に接続してWordpressをインストール
+	DocumentRoot と htmlになっているところをwordpressに変更  
+
+`http://192.168.56.101/wp-admin/install.php` に接続してWordpressをインストール
 
 おしまい！！！！！！！

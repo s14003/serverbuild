@@ -37,8 +37,9 @@ Vagrantfileの中身を書き換える
 ##2-2Wordpressを動かす  
 ### nginxのインストール
 	
-	$ sudo yum -y install http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+	$ sudo yum -y install http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm  
 	$ yum install --enablerepo=epel nginx  
+
 でnginxをインストール  
 
 ### phpのインストール 
@@ -47,8 +48,10 @@ Vagrantfileの中身を書き換える
 
 ### php-fpmの設定  
 
-	www.conf の中身のユーザ・グループをnginxに変更  
+www.conf の中身のユーザ・グループをnginxに変更  
+
 	$ systemctl start php-fpm でphp-fpmのサービスを起動  
+
 	$ systemctl enable php-fpm で自動起動の設定  
 
 ### MariaDBのインストール 
@@ -58,11 +61,12 @@ Vagrantfileの中身を書き換える
 ### MariaDBの起動  
 
 	$ systemctl start mariadb でサービスを起動   
+
 	$ systemctl enable mariadb で自動起動設定  
 
 ### MariaDBの設定  
 
-	$ mysql_secure_installation
+	$ mysql_secure_installation  
 
 ### MariaDBの再起動  
 
@@ -81,9 +85,11 @@ Vagrantfileの中身を書き換える
 	
 ### Wordpressのダウンロード  
 	$ wget http://wordpress.org/latest.tar.gz    
+
 でダウンロード開始  
 
 	$ tar xzfv latest-ja.tar.gz  
+
 で解凍  
 所有者とグループをnginxに変更  
 
@@ -113,7 +119,7 @@ MariaDBで作った内容を入力、ユニークキーを入れて:wq
 
 ### 2-3-1 apacheをダウンロード・コンパイル
 #### ダウンロード
-公式サイトからvarsion2.2のものをwgetを使ってダウンロード  
+公式サイトからvarsion2.2のもの弁べいっｆっｄをwgetを使ってダウンロード  
 #### ソースツリーの設定 
 デフォルトオプションを使ってソースツリーを全て設定するなら  
 
@@ -129,6 +135,7 @@ MariaDBで作った内容を入力、ユニークキーを入れて:wq
 #### ダウンロード・展開  
 
 	$ wget http://jp2.php.net/get/php-7.0.6.tar.bz2/from/this/mirror  
+
 でphpのソースをダウンロード  
 
 	$ tar -xvf mirror  
@@ -160,7 +167,6 @@ MariaDBで作った内容を入力、ユニークキーを入れて:wq
 	$ tar mysql57-community-release-el7-8.noarch.rpm で、展開。  
 	$ sudo yum -y install mysql mysql-devel mysql-server  でmysqlをインストール  
 
-
 ### Wordpress用のデータベース作成  
 
 ``` mysql
@@ -187,3 +193,5 @@ PHPが動いてないっぽかったらFilesMatchを確認する
 
 
 	 192.168.56.129/wp-admin/install.php に繋いでインストールが開始されたら終了  
+
+##2-4
