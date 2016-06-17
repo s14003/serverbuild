@@ -77,9 +77,38 @@ viで/etc/sysconfig/network-scripts/ifcfg-enp0s3と
 wp-config.phpにうえで作ったデータベースのデータを入力  
 [秘密鍵の値](https://api.wordpress.org/secret-key/1.1/salt/)を入力  
 
-`/etc/httpd/httpd.conf` の中身を修正する  
+`/etc/httpd/conf/httpd.conf` の中身を修正する  
 
-	DocumentRoot と htmlになっているところをwordpressに変更  
+	DocumentRoot "/var/www/wordpress"
+
+	<Directory "/var/www/wordpress">
+    #
+    # Possible values for the Options directive are "None", "All",
+    # or any combination of:
+    #   Indexes Includes FollowSymLinks SymLinksifOwnerMatch ExecCGI MultiViews
+    #
+    # Note that "MultiViews" must be named *explicitly* --- "Options All"
+    # doesn't give it to you.
+    #
+    # The Options directive is both complicated and important.  Please see
+    # http://httpd.apache.org/docs/2.2/mod/core.html#options
+    # for more information.
+    #
+    Options Includes FollowSymLinks
+
+    #
+    # AllowOverride controls what directives may be placed in .htaccess files.
+    # It can be "All", "None", or any combination of the keywords:
+    #   Options FileInfo AuthConfig Limit
+    #
+    AllowOverride All
+
+    #
+    # Controls who can get stuff from this server.
+    #
+    Order allow,deny
+    Allow from all
+	</Directory>
 
 `http://192.168.56.101/wp-admin/install.php` に接続してWordpressをインストール
 
