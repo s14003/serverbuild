@@ -269,6 +269,41 @@ Ubuntuにabコマンドをインストール
 
 	$ ab http://自分のサーバーのIPアドレス/  
 
+使ってみたらこんな感じ
+
+	This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+	Licensed to The Apache Software Foundation, http://www.apache.org/
+
+	Benchmarking 192.168.56.128 (be patient).....done
+
+
+	Server Software:        nginx/1.10.0
+	Server Hostname:        192.168.56.128
+	Server Port:            80
+
+	Document Path:          /
+	Document Length:        11791 bytes
+
+	Concurrency Level:      1
+	Time taken for tests:   2.655 seconds
+	Complete requests:      1
+	Failed requests:        0
+	Total transferred:      12025 bytes
+	HTML transferred:       11791 bytes
+	Requests per second:    0.38 [#/sec] (mean)
+	Time per request:       2655.466 [ms] (mean)
+	Time per request:       2655.466 [ms] (mean, across all concurrent requests)
+	Transfer rate:          4.42 [Kbytes/sec] received
+
+	Connection Times (ms)
+	              min  mean[+/-sd] median   max
+	Connect:        1    1   0.0      1       1
+	Processing:  2655 2655   0.0   2655    2655
+	Waiting:     2582 2582   0.0   2582    2582
+	Total:       2655 2655   0.0   2655    2655
+
+
 abコマンドのオプション  
 
 |オプション|説明|  
@@ -277,6 +312,68 @@ abコマンドのオプション
 |-c 数値|テストで同時に発行するリクエストの数を数値で指定|
 |-A ユーザー名:パスワード|ベーシック認証が必要なページでテストを行う|
 |-h| abのヘルプを表示|
+
+オプションを使って実行すると、、、  
+
+	$ ab -n 1000 -c 100 http://192.168.56.128/
+
+	This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+	Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+	Licensed to The Apache Software Foundation, http://www.apache.org/
+
+	Benchmarking 192.168.56.128 (be patient)
+	Completed 100 requests
+	Completed 200 requests
+	Completed 300 requests
+	Completed 400 requests
+	Completed 500 requests
+	Completed 600 requests
+	Completed 700 requests
+	Completed 800 requests
+	Completed 900 requests
+	Completed 1000 requests
+	Finished 1000 requests
+
+
+	Server Software:        nginx/1.10.0
+	Server Hostname:        192.168.56.128
+	Server Port:            80
+
+	Document Path:          /
+	Document Length:        11791 bytes
+
+	Concurrency Level:      100
+	Time taken for tests:   643.883 seconds
+	Complete requests:      1000
+	Failed requests:        935
+	   (Connect: 0, Receive: 0, Length: 935, Exceptions: 0)
+	Non-2xx responses:      925
+	Total transferred:      1540590 bytes
+	HTML transferred:       1343590 bytes
+	Requests per second:    1.55 [#/sec] (mean)
+	Time per request:       64388.342 [ms] (mean)
+	Time per request:       643.883 [ms] (mean, across all concurrent requests)
+	Transfer rate:          2.34 [Kbytes/sec] received
+
+	Connection Times (ms)
+	              min  mean[+/-sd] median   max
+	Connect:        0    3   7.8      0      36
+	Processing:  2567 61779 11343.6  60468  131951
+	Waiting:     2490 61084 12233.8  60401  131951
+	Total:       2570 61782 11343.2  60468  131951
+
+	Percentage of the requests served within a certain time (ms)
+	  50%  60468
+	  66%  61229
+	  75%  62953
+	  80%  63023
+	  90%  67016
+	  95%  76086
+	  98%  91073
+	  99%  94089
+	 100%  131951 (longest request)
+
+こんな感じ
 
 ### PageSpeedを使う  
 Google Chromeに[PageSpeed](https://chrome.google.com/webstore/detail/pagespeed-insights-with-p/lanlbpjbalfkflkhegagflkgcfklnbnh?utm_source=chrome-ntp-icon)をインストール  
