@@ -29,7 +29,7 @@
       action: command wget  "http://wordpress.org/latest.tar.gz" creates=latest.tar.gz
 
     - name: Extract archive
-      shell: chdir=/usr/share/nginx/ creates=/usr/share/nginx/wordpress /bin/tar xvf latest.tar.gz
+      command: tar xvf latest.tar.gz creates=~/wordpress 
     - name: Change ownership of Wordpress installation
       file:
         path: /usr/share/nginx/wordpress/
