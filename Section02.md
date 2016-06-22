@@ -175,7 +175,7 @@ MariaDBで作った内容と[オンラインジェネレーター](https://api.w
 ### 2-3-3 MySQLのインストール  
 
 	$ wget http://dev.mysql.com/get/downloads/mysql-5.7/mysql-5.7.5-m15.tar.gz で、公式リポジトリをインストール  
-	$ tar mysql57-community-release-el7-8.noarch.rpm で、展開。  
+	$ tar  -xvf mysql-5.7.5-m15.tar.gzで、展開。  
 	$ sudo yum -y install mysql mysql-devel mysql-server  でmysqlをインストール  
 	$ mysql_secure_installationで初期設定  
 
