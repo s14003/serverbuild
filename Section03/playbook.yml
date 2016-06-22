@@ -30,6 +30,8 @@
 
     - name: Extract archive
       command: tar xvf latest.tar.gz creates=~/wordpress 
+    - name: cp wprdpress
+      command: cp -r wordpress /usr/share/nginx/ 
     - name: Change ownership of Wordpress installation
       file:
         path: /usr/share/nginx/wordpress/
